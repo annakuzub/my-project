@@ -1,0 +1,38 @@
+.conteiner {
+  margin-left: 20px;
+}
+form {
+  width: 500px;
+  margin-top: 20px;
+}
+input {
+  padding: 4px 10px;
+}
+.search {
+  width: 75%;
+}
+h1 {
+  font-size: 20px;
+}
+.tabs {
+  display: block;
+  margin: 20px;
+}
+li {
+  list-style: none;
+}
+a {
+  color: #9d9d9d;
+  border-bottom: 1px dotted #9d9d9d;
+  text-decoration: none;
+  cursor: pointer;
+}
+search-city {
+  padding: 4px 0 0;
+
+  height: 14px;
+}
+.temperature {
+  font-size: 32px;
+  font-weight: bold;
+}
