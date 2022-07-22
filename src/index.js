@@ -9,11 +9,18 @@ let days = [
   "Friday",
   "Saturday",
 ];
-let day = days[current.getDay()];
 let Hours = current.getHours();
+if (Hours < 10) {
+  Hours = `0${Hours}`;
+}
 let Minutes = current.getMinutes();
+if (Minutes < 10) {
+  Minutes = `0${Minutes}`;
+}
+let day = days[current.getDay()];
 let dayNow = document.querySelector("#day-now");
 dayNow.innerHTML = `${day}, ${Hours}:${Minutes}`;
+
 //city//
 function citySearch(event) {
   event.preventDefault();
