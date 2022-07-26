@@ -31,8 +31,21 @@ function citySearch(event) {
   getTemperature(cityInput.value);
 }
 
+//city//
+function cityKyiv(event) {
+  event.preventDefault();
+  let cityInput = document.querySelector("#cityKyiv");
+  let h1 = document.querySelector("h1");
+  h1.innerHTML = `${cityInput}`;
+
+  getTemperature(cityInput);
+}
+
 let formSearch = document.querySelector("#form-search");
 formSearch.addEventListener("submit", citySearch);
+
+let hrefKyiv = document.querySelector("#cityKyiv");
+hrefKyiv.addEventListener("click", cityKyiv);
 
 // Temperature city input
 function getTemperature(cityName) {
@@ -110,3 +123,30 @@ function cityTemperatureC(event) {
 
 let celsiumLink = document.querySelector("#celsium-link");
 celsiumLink.addEventListener("click", cityTemperatureC);
+// forecast
+
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+  let days = ["Thu", "Fri", "Sat", "Sun"];
+  let forecastHTML = `<div class="row">`;
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `<div class="col-2">
+      <div class="weather-forecast-date">${day}</div>
+      <img
+        src="http://openweathermap.org/img/wn/01d@2x.png"
+        alt=""
+        width="42"
+      />
+      <div class="weather-forecast-temperatures">
+        <span class="weather-forecast-temperature-max">18 °C</span>
+        <span class="weather-forecast-temperature-min">12 °C</span>
+      </div>
+      </div>`;
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+  console.log(forecastHTML);
+}
+displayForecast();
