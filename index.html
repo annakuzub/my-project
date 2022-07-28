@@ -20,7 +20,7 @@
         <div class="weather-wrapper">
           <div class="weather-app">
           <div class="row">
-          <div class="col-8">
+          <div class="col-7">
           <form id="form-search">
           <input 
         type="search" 
@@ -38,23 +38,14 @@
                   class="btn btn-primary w-100"
         />
         </div>
-        <div class="col-2">
+        <div class="col-3">
         <button type="button" 
-       class=" btn btn-success w-100"
-           id="current-city">Current </button>
+       class=" btn btn-primary w-100"
+           id="current-city">Current location</button>
         </div>
       </div>
       </form>
-      <p id="search-city">
-      <div class="header">
-          <a href="#" id="cityKyiv"> Kyiv </a>
-          <a href="#" target="_blank" > Kharkiv </a>
-          <a href="#" target="_blank" > Paris </a>
-          <a href="#" target="_blank" > Berlin </a>
-          <a href="#" target="_blank" > London </a>
-      </div>
-    </p>
-          <div class="overviw">
+        <div class="overviw">
       <h1 id="city"> 
       </h1>
       <ul>
@@ -64,28 +55,25 @@
       </ul>
       </div>
           <div class="row">
-          <div class="col-6">
+          <div class="col-4">
             <img 
           src="http://openweathermap.org/img/wn/01d@2x.png" alt="Sunny"
            class="float-left"
            id="icon"/>
             <span class="temperature" id="temperature" ></span>
             <span class="units">  
-            <a href="#" id="celsium-link" class="active">°C</a> |
-            <a href="#" id="fahrenheit-link">°F</a>
-            </span>
+            °C
+             </span>
           </div>
-          <div class="col-6">
+          <div class="col-3">
             <ul>
             <li>Humidity:<span id="humidity"></span> % </li>
-            <li>Wind:<span id="wind"></span> km/h</li>
+            <li>Wind:<span id="wind"></span> m/s</li>
             </div>
         </div>
 
-        <div class="weather-forecast" id="forecast">
-      
-                
-                          
+        <div class="weather-forecast" id="forecast">      
+                        
           </div>
            </div> 
            </div>

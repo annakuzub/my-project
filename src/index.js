@@ -18,8 +18,24 @@ if (Minutes < 10) {
   Minutes = `0${Minutes}`;
 }
 let day = days[current.getDay()];
+let date = current.getDate();
+let months = [
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec",
+];
+let month = months[current.getMonth()];
 let dayNow = document.querySelector("#day-now");
-dayNow.innerHTML = `${day}, ${Hours}:${Minutes}`;
+dayNow.innerHTML = `${month} ${date},${day}, ${Hours}:${Minutes}`;
 function formatDay(timestemp) {
   let date = new Date(timestemp * 1000);
   let day = date.getDay();
@@ -37,21 +53,8 @@ function citySearch(event) {
   getTemperature(cityInput.value);
 }
 
-//city//
-//function cityKyiv(event) {
-//  event.preventDefault();
-//  let cityInput = document.querySelector("#cityKyiv");
-//  let h1 = document.querySelector("h1");
-//  h1.innerHTML = `${cityInput}`;
-
-// getTemperature(cityInput);
-//}
-
 let formSearch = document.querySelector("#form-search");
 formSearch.addEventListener("submit", citySearch);
-
-//let hrefKyiv = document.querySelector("#cityKyiv");
-//hrefKyiv.addEventListener("click", cityKyiv);
 
 // Temperature city input
 function getTemperature(cityName) {
@@ -108,6 +111,19 @@ function showCurrentTemperature(response) {
   cityCurrentTemperat.innerHTML = ` ${citycurrentTemperature} `;
   let h1 = document.querySelector("h1");
   h1.innerHTML = `${cityCur}`;
+  document.querySelector("#humidity").innerHTML = response.data.main.humidity;
+  document.querySelector("#wind").innerHTML = Math.round(
+    response.data.wind.speed
+  );
+  document.querySelector("#description").innerHTML =
+    response.data.weather[0].main;
+  let iconElement = document.querySelector("#icon");
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  iconElement.setAttribute("alt", response.data.weather[0].description);
+  getForecast(response.data.coord);
 }
 
 function cityCurrent(event) {
@@ -118,27 +134,6 @@ function cityCurrent(event) {
 let formCurrent = document.querySelector("#current-city");
 formCurrent.addEventListener("click", cityCurrent);
 
-// °C and °F//
-
-function cityTemperatureF(event) {
-  event.preventDefault();
-  let cityTempF = document.querySelector(".temperature");
-  cityTempF.innerHTML = `${Math.round((cityTempF.innerHTML * 9) / 5 + 32)}`;
-}
-
-let fahrenheitLink = document.querySelector("#fahrenheit-link");
-fahrenheitLink.addEventListener("click", cityTemperatureF);
-
-let cityTempC = null;
-
-function cityTemperatureC(event) {
-  event.preventDefault();
-  let cityTempC = document.querySelector(".temperature");
-  cityTempC.innerHTML = `${Math.round(((cityTempC.innerHTML - 32) * 5) / 9)}`;
-}
-
-let celsiumLink = document.querySelector("#celsium-link");
-celsiumLink.addEventListener("click", cityTemperatureC);
 // forecast
 
 function displayForecast(response) {
@@ -162,10 +157,10 @@ function displayForecast(response) {
       <div class="weather-forecast-temperatures">
         <span class="weather-forecast-temperature-max">${Math.round(
           forecastDay.temp.max
-        )} °C</span>
+        )} °</span>
         <span class="weather-forecast-temperature-min">${Math.round(
           forecastDay.temp.min
-        )} °C</span>
+        )} °</span>
       </div>
       </div>`;
     }
